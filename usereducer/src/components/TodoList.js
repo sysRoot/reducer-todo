@@ -3,9 +3,10 @@ import TodoItem from './TodoItem'
 import {TodoContext} from '../contexts'
 
 const TodoList = () => {
-    const {todoState} = React.useContext(TodoContext)
+    const {state} = React.useContext(TodoContext)
 
-    const todos = todoState.map(todo => <TodoItem key={todo.uuid} todo={todo}/>)
+    console.log(state)
+    const todos = state.map(todo => <TodoItem key={todo.uuid} todo={todo}/>)
     return (<ul>{todos}</ul>);
 }
  

@@ -1,12 +1,13 @@
 import React from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
-import {TodoContext} from './contexts/';
+import { TodoContext, DispatchContext } from './contexts/';
+import { reducer } from './reducers/'
 import uuid from 'uuid';
 import './App.css';
 
 function App() {
-    const [todoState, setTodoState] = React.useState([
+    const [todoState] = React.useState([
         {
             uuid: uuid.v4(),
             todo: 'Some todo',
@@ -20,14 +21,17 @@ function App() {
             date: new Date(),
         },
     ]);
-    const [state, dispatch]
+    const [state, dispatch] = React.useReducer(reducer, todoState)
+
     return (
-        <TodoContext.Provider value={{todoState, setTodoState}}>
-            <div className='App'>
-                <TodoForm />
-                <TodoList />
-            </div>
-        </TodoContext.Provider>
+        <DispatchContext.Provider value={{dispatch}}>
+            <TodoContext.Provider value={{state}}>
+                <div className='App'>
+                    <TodoForm />
+                    <TodoList />
+                </div>
+            </TodoContext.Provider>
+        </DispatchContext.Provider>
     );
 }
 
