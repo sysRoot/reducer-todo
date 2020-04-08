@@ -11,13 +11,13 @@ function App() {
         {
             uuid: uuid.v4(),
             todo: 'Some todo',
-            complete: false,
+            completed: false,
             date: new Date(),
         },
         {
             uuid: uuid.v4(),
             todo: 'Some other todo',
-            complete: true,
+            completed: true,
             date: new Date(),
         },
     ]);

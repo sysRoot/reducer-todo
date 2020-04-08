@@ -10,16 +10,26 @@ export const reducer = (state, action) => {
                     todo: action.payload,
                     completed: false,
                     date: new Date(),
-                }
+                },
             ];
-            return nextState
+            return nextState;
         }
         // case 'REMOVE_TODO': {
         //Stretch, do later
         // }
         case 'SET_COMPLETE': {
+            const nextState = [
+                ...state.map((todo) => {
+                    if (todo.uuid === action.payload) {
+                        return { ...todo, completed: !todo.completed };
+                    }
+                    return todo;
+                }),
+            ];
+            return nextState;
         }
         case 'CLEAR_COMPLETE': {
+            break;
         }
 
         default:
