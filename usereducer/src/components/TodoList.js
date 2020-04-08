@@ -1,8 +1,12 @@
 import React from 'react'
-import Todo from './Todo'
+import TodoItem from './TodoItem'
+import {TodoContext} from '../contexts'
 
 const TodoList = () => {
-    return <Todo />;
+    const {todoState} = React.useContext(TodoContext)
+
+    const todos = todoState.map(todo => <TodoItem key={todo.uuid} todo={todo}/>)
+    return (<ul>{todos}</ul>);
 }
  
 export default TodoList;
