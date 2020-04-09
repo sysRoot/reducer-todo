@@ -1,13 +1,29 @@
-import React from 'react'
-import TodoItem from './TodoItem'
-import {TodoContext} from '../contexts'
+import React from 'react';
+import TodoItem from './TodoItem';
+import { TodoContext, DispatchContext } from '../contexts';
+import { moveListItems } from '../actions';
+import { DraggableList } from 'lucid-ui';
 
 const TodoList = () => {
-    const {state} = React.useContext(TodoContext)
+    const { state } = React.useContext(TodoContext);
+    const { dispatch } = React.useContext(DispatchContext);
 
-    console.log(state)
-    const todos = state.map(todo => <TodoItem key={todo.uuid} todo={todo}/>)
-    return (<ul>{todos}</ul>);
-}
- 
+    const handleDrop = ({oldIndex, newIndex}) => {
+        dispatch(moveListItems({ oldIndex, newIndex }))
+    }
+    return (
+        <DraggableList
+            onDrop={handleDrop}
+            style={{ width: 500 }}
+            hasDragHandle={false}
+        >
+            {state.map((todo) => (
+                <DraggableList.Item key={todo.uuid}>
+                    <TodoItem todo={todo} />
+                </DraggableList.Item>
+            ))}
+        </DraggableList>
+    );
+};
+
 export default TodoList;

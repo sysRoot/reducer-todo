@@ -5,6 +5,7 @@ import { TodoContext, DispatchContext } from './contexts/';
 import { reducer } from './reducers/'
 import uuid from 'uuid';
 import './App.css';
+import 'lucid-ui/dist/lucid.css'
 
 function App() {
     const [todoState] = React.useState([
