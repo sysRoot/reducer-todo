@@ -2,10 +2,11 @@ import React from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import { TodoContext, DispatchContext } from './contexts/';
-import { reducer } from './reducers/'
+import { reducer } from './reducers/';
+import { Grid } from 'lucid-ui';
 import uuid from 'uuid';
 import './App.css';
-import 'lucid-ui/dist/lucid.css'
+import 'lucid-ui/dist/lucid.css';
 
 function App() {
     const [todoState] = React.useState([
@@ -22,14 +23,20 @@ function App() {
             date: new Date(),
         },
     ]);
-    const [state, dispatch] = React.useReducer(reducer, todoState)
+    const [state, dispatch] = React.useReducer(reducer, todoState);
 
     return (
-        <DispatchContext.Provider value={{dispatch}}>
-            <TodoContext.Provider value={{state}}>
+        <DispatchContext.Provider value={{ dispatch }}>
+            <TodoContext.Provider value={{ state }}>
                 <div className='App'>
-                    <TodoForm />
-                    <TodoList />
+                    <Grid>
+                        <Grid.Cell is8>
+                            <TodoList />
+                        </Grid.Cell>
+                        <Grid.Cell>
+                            <TodoForm />
+                        </Grid.Cell>
+                    </Grid>
                 </div>
             </TodoContext.Provider>
         </DispatchContext.Provider>

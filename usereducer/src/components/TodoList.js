@@ -14,7 +14,7 @@ const TodoList = () => {
     return (
         <DraggableList
             onDrop={handleDrop}
-            style={{ width: 500 }}
+            style={{ width: '100%' }}
             hasDragHandle={false}
         >
             {state.map((todo) => (
