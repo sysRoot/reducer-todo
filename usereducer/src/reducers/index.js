@@ -14,9 +14,11 @@ export const reducer = (state, action) => {
             ];
             return nextState;
         }
-        // case 'REMOVE_TODO': {
-        //Stretch, do later
-        // }
+        case 'REMOVE_TODO': {
+            // Stretch, do later
+            const nextState = [...state.filter((todo) => todo.uuid !== action.payload)]
+            return nextState;
+        }
         case 'SET_COMPLETE': {
             const nextState = [
                 ...state.map((todo) => {
@@ -29,7 +31,9 @@ export const reducer = (state, action) => {
             return nextState;
         }
         case 'CLEAR_COMPLETE': {
-            const nextState = [...state.filter((todo) => todo.completed === false)]
+            const nextState = [
+                ...state.filter((todo) => todo.completed === false),
+            ];
             return nextState;
         }
 
