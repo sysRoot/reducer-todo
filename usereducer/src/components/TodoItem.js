@@ -1,6 +1,7 @@
 import React from 'react';
 import { DispatchContext } from '../contexts';
 import { setComplete } from '../actions';
+import Moment from 'react-moment';
 import '../App.css';
 
 const TodoItem = ({ todo }) => {
@@ -17,6 +18,7 @@ const TodoItem = ({ todo }) => {
             >
                 {todo.todo}
             </span>
+            -- <Moment format="DD/MM/YYYY">{todo.date}</Moment>
         </li>
     );
 };

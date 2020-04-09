@@ -29,7 +29,8 @@ export const reducer = (state, action) => {
             return nextState;
         }
         case 'CLEAR_COMPLETE': {
-            break;
+            const nextState = [...state.filter((todo) => todo.completed === false)]
+            return nextState;
         }
 
         default:
