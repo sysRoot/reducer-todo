@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+}
+
+.completeTodo {
+  color: greenyellow
+}
+.incompleteTodo {
+  color: red
+}
